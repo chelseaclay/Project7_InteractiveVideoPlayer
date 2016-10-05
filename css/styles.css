@@ -1,0 +1,340 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  height: 12px;
+  transform: scale(0.85);
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.videoContainer {
+  margin: 0 auto;
+  display: block;
+  width: 320px;
+}
+
+#video {
+  width: 100%;
+}
+
+/*************************
+Video Controls
+*************************/
+
+
+#videoControls {
+  width: 100%;
+  background: black; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(gray, black); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(gray, black); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(gray, black); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(gray, black); /* Standard syntax */
+  padding: 0 1em 5px;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: -5px;
+}
+
+.progress {
+  padding-bottom: 10px;
+  position: relative;
+  flex-basis: 100%;
+}
+
+#progressBar,
+#bufferBar {
+  width: 100%;
+  cursor:  pointer;
+  -webkit-appearance: none;
+  height: 7px;
+}
+
+#progressBar {
+  position: relative;
+  z-index: 2;
+}
+
+#bufferBar {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* Style progress bar for Chrome/Safari/Opera */
+progress[value]::-webkit-progress-bar {
+  background-color: rgba(238, 238, 238, 0.4);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #FF9900;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+progress[value]::-webkit-buffer-bar {
+  background-color: rgba(238, 238, 238, 0.4);
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]#bufferBar::-webkit-progress-value {
+  background-color: white;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+/* Style progress bar for Firefox */
+#progressBar::-moz-progress-bar {
+  background-color: #eee;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+#progressBar::-moz-progress-bar {
+  background-color: #FF9900;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+#bufferBar::-moz-progress-bar {
+  background-color: rgba(238,238,238,0.5);
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+#bufferBar::-moz-progress-bar {
+  background-color: white;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.play-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-basis: 100%;
+}
+
+#playPauseBtn,
+.time,
+.speed,
+.volume,
+#fullscreenBtn {
+  display: inline-block;
+}
+
+#playPauseBtn {
+  transform: scale(0.75);
+}
+
+.time {
+  font-size: 0.85em;
+  text-align: right;
+  color: white;
+  margin-left: 15px;
+  padding-top: 10px;
+}
+
+.speed {
+  display: inline-block;
+  position: relative;
+}
+
+#playbackSpeed {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: -7px;
+  font-size: 0.75em;
+  font-weight: lighter;
+  line-height: 0.75em;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0.1em 0.75em;
+  border: 0.5px solid black;
+  z-index: 3;
+}
+
+#playbackSpeed p {
+  color: white;
+  text-align: center;
+  border-bottom: 0.25px solid rgba(255,255,255, 0.5);
+  padding-bottom: 0.65em;
+  cursor: pointer;
+}
+
+#playbackSpeed #speed5 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.selected,
+#playbackSpeed p:hover {
+  font-weight: bold;
+}
+
+#volumeBar {
+  display: none;
+}
+
+.transcriptContainer {
+  margin: 10px auto 0;
+  display: block;
+  width: 320px;
+  font-size: 0.75em;
+  line-height: 1.4em;
+  padding: 0 0.75em;
+  color: #3d3d3d;
+  font-weight: lighter;
+}
+
+#transcript span:hover {
+  color: black;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.highlight {
+  color: #FF9900;
+}
+
+#transcript span.highlight:hover{
+  color: #FF9900;
+}
+
+/*************************
+Media Queries
+*************************/
+
+@media (min-width: 760px) {
+
+  button {
+    transform: scale(1.1);
+    height: 22px;
+  }
+
+  .videoContainer {
+    width: 760px;
+  }
+
+  .play-time {
+    padding-top: 2px;
+    flex-basis: auto;
+    flex-grow: 2;
+    justify-content: flex-start;
+  }
+
+  #playPauseBtn {
+    transform: scale(1);
+  }
+
+  .time {
+    text-align: left;
+    font-size: 1em;
+  }
+
+  .speed,
+  .volume,
+  #closedCaptioning,
+  #fullscreenBtn {
+    margin-left: 15px;
+    padding-top: 10px;
+  }
+
+  #playbackSpeed {
+    font-size: 1em;
+    bottom: 45px;
+    left: -15px;
+  }
+
+  .transcriptContainer {
+    width: 760px;
+    font-size: 1.25em;
+  }
+/* END MEDIA QUERY TABLET */
+}
+
+
+@media (min-width: 1024px) {
+
+  .videoContainer {
+    height: 429px;
+    position: relative !important;
+    overflow: hidden;
+  }
+
+  .videoContainer:hover #videoControls {
+    top: 345px;
+  }
+
+  #videoControls {
+    width: 100%;
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0));
+    padding: 0 1em 15px;
+    position: absolute;
+    left: 0;
+    top: 410px;
+    transition: top 0.5s ease-in-out;
+  }
+
+  .play-time {
+    padding-top: 10px;
+  }
+
+  .speed,
+  .volume,
+  #closedCaptioning,
+  #fullscreenBtn {
+    padding-top: 4px;
+  }
+
+  .volume {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #volumeBar {
+    display: inline-block;
+    align-self: flex-start;
+    margin-left: 15px;
+  }
+
+  .transcriptContainer {
+    font-size: 1em;
+  }
+
+/*  MEDIA QUERY DESKTOP */
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Video Player</title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="videoContainer">
+      <video id="video" controls>
+        <source src="video/video.mp4" type="video/mp4" />
+        <source src="video/video.ogg" type="video/ogg" />
+        <track id="subtitles" label="English" kind="subtitles" srclang="en" src="video/captions.vtt" default />
+      </video>
+
+      <div id="videoControls">
+        <div class="progress">
+         <progress id="progressBar" value="0" max="100">
+           <span id="progress-bar"></span>
+         </progress>
+         <progress id="bufferBar" value="0" max="100">
+           <span id="buffer-bar"></span>
+         </progress>
+        </div>
+        <div class="play-time">
+          <button id="playPauseBtn" type="button"><img src="icons/play-icon.png" alt="Play" /></button>
+          <div class="time">
+            <span id="currentTimeText">00:00</span> / <span id="durationTimeText">00:00</span>
+          </div>
+        </div>
+        <div class="speed">
+          <button id="playbackBtn" type="button"><img src="icons/playback-speed-icon.png" alt="Playback Speed" /></button>
+          <div id="playbackSpeed">
+            <p id="speed15">1.5x</p>
+            <p id="speed125">1.25x</p>
+            <p id="speedN" class="selected">Normal</p>
+            <p id="speed75">0.75x</p>
+            <p id="speed5">0.5x</p>
+          </div>
+        </div>
+        <div class="volume">
+          <button id="muteBtn" type="button"><img src="icons/volume-on-icon.png" alt="UnMute" /></button>
+          <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
+        </div>
+        <button id="closedCaptioning" type="button"><img src="icons/closedCaptioning-on-icon.png" alt="Closed Captioning" /></button>
+        <button id="fullscreenBtn" type="button"><img src="icons/fullscreen-icon.png" alt="Fullscreen" /></button>
+      </div>
+    </div>
+
+
+    <div class="transcriptContainer">
+      <p id="transcript"></p>
+    </div>
+
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+  </body>
+  </html>
