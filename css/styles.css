@@ -13,7 +13,6 @@ button {
   background: none;
   border: none;
   outline: none;
-  height: 12px;
   transform: scale(0.85);
   padding: 0 5px;
   cursor: pointer;
@@ -43,8 +42,11 @@ Video Controls
     background: linear-gradient(gray, black); /* Standard syntax */
   padding: 0 1em 5px;
   display: flex !important;
+  display:-webkit-flex !important;
   flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
   margin-top: -5px;
 }
 
@@ -52,6 +54,7 @@ Video Controls
   padding-bottom: 10px;
   position: relative;
   flex-basis: 100%;
+  -webkit-flex-basis: 100%;
 }
 
 #progressBar,
@@ -139,10 +142,14 @@ progress[value]#bufferBar::-webkit-progress-value {
 
 .play-time {
   display: flex;
+  display:-webkit-flex;
   justify-content: space-between;
+  -webkit-justify-content: space-between;
   align-items: center;
+  -webkit-align-items: center;
   margin-bottom: 20px;
   flex-basis: 100%;
+  -webkit-flex-basis: 100%;
 }
 
 #playPauseBtn,
@@ -162,7 +169,6 @@ progress[value]#bufferBar::-webkit-progress-value {
   text-align: right;
   color: white;
   margin-left: 15px;
-  padding-top: 10px;
 }
 
 .speed {
@@ -238,7 +244,6 @@ Media Queries
 
   button {
     transform: scale(1.1);
-    height: 22px;
   }
 
   .videoContainer {
@@ -248,8 +253,11 @@ Media Queries
   .play-time {
     padding-top: 2px;
     flex-basis: auto;
+    -webkit-flex-basis: auto;
     flex-grow: 2;
+    -webkit-flex-grow: 2;
     justify-content: flex-start;
+    -webkit-justify-content: flex-start;
   }
 
   #playPauseBtn {
@@ -266,6 +274,10 @@ Media Queries
   #closedCaptioning,
   #fullscreenBtn {
     margin-left: 15px;
+  }
+
+  .speed,
+  .volume {
     padding-top: 10px;
   }
 
@@ -299,9 +311,13 @@ Media Queries
   #videoControls {
     width: 100%;
     display: flex !important;
+    display:-webkit-flex !important;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
     align-items: center;
+    -webkit-align-items: center;
     background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0));
     padding: 0 1em 15px;
     position: absolute;
@@ -323,12 +339,15 @@ Media Queries
 
   .volume {
     display: flex;
+    display:-webkit-flex;
     justify-content: space-between;
+    -webkit-justify-content: space-between;
   }
 
   #volumeBar {
     display: inline-block;
     align-self: flex-start;
+    -webkit-align-self: flex-start;
     margin-left: 15px;
   }
 
